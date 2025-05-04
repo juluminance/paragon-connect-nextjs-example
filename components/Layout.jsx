@@ -24,6 +24,11 @@ const Layout = ({ children, title }) => {
             Integrations
           </a>
         </Link>
+        <Link href="/interact">
+          <a className={router.asPath === "/interact" ? styles.active : ""}>
+            Interactions
+          </a>
+        </Link>
       </nav>
       {children}
     </div>
