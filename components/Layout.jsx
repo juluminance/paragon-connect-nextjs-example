@@ -9,16 +9,16 @@ const Layout = ({ children, title }) => {
   return (
     <div className="page">
       <header className={styles.header}>
-        <p>TaskLab</p>
+        <p>Luminance</p>
         <p style={{ fontWeight: 500, textAlign: "center" }}>{title}</p>
         <div className="user-container"></div>
       </header>
       <nav className={styles.nav}>
-        <Link href="/tasks">
+        {/* <Link href="/tasks">
           <a className={router.asPath === "/tasks" ? styles.active : ""}>
             Tasks
           </a>
-        </Link>
+        </Link> */}
         <Link href="/integrations">
           <a className={router.asPath === "/integrations" ? styles.active : ""}>
             Integrations
