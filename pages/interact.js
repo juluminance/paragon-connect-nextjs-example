@@ -8,6 +8,7 @@ export default function ButtonEventPage({ user, paragonUserToken }) {
   const [interactData, setInteractData] = useState(null);
   const [overlay, setOverlay] = useState({ visible: false, content: "" });
 
+  
   useEffect(() => {
     setIsSSR(false);
 
@@ -74,6 +75,25 @@ export default function ButtonEventPage({ user, paragonUserToken }) {
                     fileSize: "file_size",
                     fileUrl: "file_url",
                     fileDescription: "file_description",
+                    amount: "amount",
+                    contractId: "contract_id",
+                    contractName: "contract_name",
+                    contractOwner: "contract_owner",
+                    contractStatus: "contract_status",
+                    contractType: "contract_type",
+                    contractStartDate: "contract_start_date",
+                    contractEndDate: "contract_end_date",
+                    contractEffectiveDate: "contract_effective_date",
+                    contractExpirationDate: "contract_expiration_date",
+                    contractRenewalDate: "contract_renewal_date",
+                    contractTerminationDate: "contract_termination_date",
+                    contractPaymentTerms: "contract_payment_terms",
+                    contractBillingCycle: "contract_billing_cycle",
+                    contractCurrency: "contract_currency",
+                    contractBillingAddress: "contract_billing_address",
+                    contractShippingAddress: "contract_shipping_address",
+                    contractBillingContact: "contract_billing_contact",
+                    contractShippingContact: "contract_shipping_contact",   
              },
              pull_data_from_integration: {
                     action_name: "pull_data_from_integration",
