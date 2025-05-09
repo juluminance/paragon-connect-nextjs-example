@@ -44,6 +44,49 @@ export default function ButtonEventPage({ user, paragonUserToken }) {
     setOverlay({ visible: false, content: "" });
   };
 
+  var paragonJson = {
+     workflow_actions: {
+             send_file_for_signature: {
+                     action_name: "send_file_for_signature",
+                     docusign: "workflow_id",
+                     signatureOwner: "signature_owner"
+             },
+             send_file_to_integration: {
+                    action_name: "send_file_to_integration",
+                    salesforce: "workflow_id",
+                    sharepoint: "workflow_id",
+                    file: "file_id",
+                    fileName: "file_name",
+                    fileType: "file_type",
+                    fileSize: "file_size",
+                    fileUrl: "file_url",
+                    fileDescription: "file_description",
+             },
+             send_data_to_integration: {
+                    action_name: "send_data_to_integration",
+                    salesforce: "workflow_id",
+                    sharepoint: "workflow_id",
+                    file: "file_id",
+                    fileName: "file_name",
+                    fileType: "file_type",
+                    fileSize: "file_size",
+                    fileUrl: "file_url",
+                    fileDescription: "file_description",
+             },
+             pull_data_from_integration: {
+                    action_name: "pull_data_from_integration",
+                    sharepoint: "workflow_id",
+                    salesforce: "workflow_id",
+                    file: "file_id",
+                    fileName: "file_name",
+                    fileType: "file_type",
+                    fileSize: "file_size",
+                    fileUrl: "file_url",
+                    fileDescription: "file_description",
+            }
+      }
+}
+
   return (
     <Layout title="Interaction">
       <section
@@ -61,12 +104,9 @@ export default function ButtonEventPage({ user, paragonUserToken }) {
             <h1>Interaction</h1>
             <h4>Imagine these are interactions in the Luminance UI/back-end</h4>
             <button
-              onClick={() =>
-                handleButtonClick("contractExecuted", {
-                  contractId: "0x1234567890abcdef1234567890abcdef12345678",
-                  amount: Math.random() * 1000,
-                  saleforceOpId: "006gK000001eykrQAA",
-                })
+              onClick={() =>handleButtonClick(
+                paragonJson.workflow_actions.send_data_to_integration.action_name, 
+                paragonJson.workflow_actions.send_data_to_integration)
               }
             >
               Send Executed Contract Info from Luminance to Salesforce Op
