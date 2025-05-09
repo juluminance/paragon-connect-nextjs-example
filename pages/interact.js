@@ -67,7 +67,7 @@ export default function ButtonEventPage({ user, paragonUserToken }) {
              send_data_to_integration: {
                     action_name: "send_data_to_integration",
                     salesforce: "workflow_id",
-                    opportunityId: "opportunity_id",
+                    opportunityId: "006gK000001eykrQAA",
                     sharepoint: "workflow_id",
                     file: "file_id",
                     fileName: "file_name",
@@ -141,7 +141,7 @@ export default function ButtonEventPage({ user, paragonUserToken }) {
                 handleButtonClick("contractInformation", {
                   accountOwner: "accountOwner_is_" + Math.random(),
                   salesforceAccountId: "001gK000005Qho4QAC",
-                })
+                })``
               }
             >
               Send Contract Owner information from Luminance to Salesforce Account
