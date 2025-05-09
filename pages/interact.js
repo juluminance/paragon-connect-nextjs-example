@@ -54,6 +54,7 @@ export default function ButtonEventPage({ user, paragonUserToken }) {
              send_file_to_integration: {
                     action_name: "send_file_to_integration",
                     salesforce: "workflow_id",
+                    opportunityId: "opportunity_id",
                     sharepoint: "workflow_id",
                     file: "file_id",
                     fileName: "file_name",
@@ -65,6 +66,7 @@ export default function ButtonEventPage({ user, paragonUserToken }) {
              send_data_to_integration: {
                     action_name: "send_data_to_integration",
                     salesforce: "workflow_id",
+                    opportunityId: "opportunity_id",
                     sharepoint: "workflow_id",
                     file: "file_id",
                     fileName: "file_name",
@@ -77,6 +79,7 @@ export default function ButtonEventPage({ user, paragonUserToken }) {
                     action_name: "pull_data_from_integration",
                     sharepoint: "workflow_id",
                     salesforce: "workflow_id",
+                    opportunityId: "opportunity_id",
                     file: "file_id",
                     fileName: "file_name",
                     fileType: "file_type",
