@@ -26,9 +26,24 @@ export default function ButtonEventPage({ user, paragonUserToken }) {
     return () => clearInterval(interval); // Cleanup interval on component unmount
   }, []);
 
-  const handleButtonClick = async (eventName, eventPayload) => {
+  const handleButtonClickAppEvent = async (eventName, eventPayload) => {
     try {
       paragon.event(eventName, eventPayload);
+      setOverlay({
+        visible: true,
+        content: `Event sent: ${eventName}\nPayload: ${JSON.stringify(eventPayload, null, 2)}`,
+      });
+    } catch (error) {
+      setOverlay({
+        visible: true,
+        content: `Error: ${error.message}`,
+      });
+    }
+  };
+
+    const handleButtonClickRequest = async (workflowId, eventPayload) => {
+    try {
+      await paragon.workflow(workflowId, eventPayload);
       setOverlay({
         visible: true,
         content: `Event sent: ${eventName}\nPayload: ${JSON.stringify(eventPayload, null, 2)}`,
@@ -54,9 +69,10 @@ export default function ButtonEventPage({ user, paragonUserToken }) {
              },
              send_file_to_integration: {
                     action_name: "send_file_to_integration",
+                    salesForceworkflowId: "df733a9e-98e9-4b27-8a94-1946e84c2afc",
                     salesforce: "workflow_id",
                     opportunityId: "opportunity_id",
-                    sharepoint: "workflow_id",
+                    sharepointWorkflowId: "workflow_id",
                     file: "file_id",
                     fileName: "file_name",
                     fileType: "file_type",
@@ -127,24 +143,23 @@ export default function ButtonEventPage({ user, paragonUserToken }) {
             <h1>Interaction</h1>
             <h4>Imagine these are interactions in the Luminance UI/back-end</h4>
             <button
-              onClick={() =>handleButtonClick(
+              onClick={() =>handleButtonClickAppEvent(
                 paragonJson.workflow_actions.send_data_to_integration.action_name, 
                 paragonJson.workflow_actions.send_data_to_integration)
               }
             >
-              Send Executed Contract Info from Luminance to Salesforce Op
+              Send Executed Contract Info from Luminance to Salesforce Op (App Event)
             </button>
             <br />
             <br />
             <button
               onClick={() =>
-                handleButtonClick("contractInformation", {
-                  accountOwner: "accountOwner_is_" + Math.random(),
-                  salesforceAccountId: "001gK000005Qho4QAC",
-                })``
+                handleButtonClickRequest(
+                  paragonJson.workflow_actions.send_file_to_integration.salesForceworkflowId, 
+                  paragonJson.workflow_actions.send_file_to_integration)
               }
             >
-              Send Contract Owner information from Luminance to Salesforce Account
+              Send Contract Owner information from Luminance to Salesforce Account (Request)
             </button>
             <br />
             <br />
@@ -153,7 +168,7 @@ export default function ButtonEventPage({ user, paragonUserToken }) {
                 <h3>Updated Data:</h3>
                 <pre>{JSON.stringify(interactData, null, 2)}</pre>
               </div>
-            )}
+            )}``
           </div>
         )}
         {overlay.visible && (
